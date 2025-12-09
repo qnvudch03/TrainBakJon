@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    int sum = b + c;
+    int q = sum / 60;
+    int r = sum % 60;
+
+    a += q;
+    while (a >= 24) a -= 24;
+
+    cout << a << " " << r;
+}
