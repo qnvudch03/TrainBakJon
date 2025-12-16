@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main() {
+    int cnt[26] = {0};
+    char width = 'a' - 'A';
+
+    std::string s;
+    std::cin >> s;
+
+    for (int i = 0; i < s.size(); i++) {
+        char target = s[i];
+        int index;
+
+        if (target > 'Z') {
+            index = target - width - 'A';
+        } else {
+            index = target - 'A';
+        }
+
+        cnt[index]++;
+    }
+
+    int maxValue = 0;
+    std::vector<int> maxIndexArr;
+
+    for (int i = 0; i < 26; i++) {
+        if (cnt[i] > maxValue) {
+            maxValue = cnt[i];
+            maxIndexArr.clear();
+            maxIndexArr.push_back(i);
+        } else if (cnt[i] == maxValue) {
+            maxIndexArr.push_back(i);
+        }
+    }
+
+    if (maxIndexArr.size() >= 2) {
+        std::cout << '?';
+    } else {
+        std::cout << (char)(maxIndexArr[0] + 65);
+    }
+}
